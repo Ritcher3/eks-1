@@ -87,6 +87,13 @@ variable "cloudwatch_log_group_retention_in_days" {
   default     = 90
 }
 
+variable "create_kms_key" {
+  description = "create a new kms key"
+  type        = bool
+  default     = "true" 
+
+}
+
 variable "enable_kms_key_rotation" {
   description = "Specifies whether key rotation is enabled"
   type        = bool
