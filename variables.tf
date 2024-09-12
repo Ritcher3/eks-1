@@ -2,6 +2,7 @@
 # Basic EKS Cluster Setup with Security and Logging
 ################################################################################
 
+
 variable "cluster_name" {
   description = "The name of the EKS cluster"
   type        = string
