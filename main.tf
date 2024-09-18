@@ -38,15 +38,13 @@ resource "aws_iam_role" "main" {
 }
 
 resource "aws_iam_role_policy_attachment" "main" {
-  count = var.create_iam_role ? 2 : 0
-
-  for_each = {
+  for_each = var.create_iam_role ? {
     AmazonEKSClusterPolicy         = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
     AmazonEKSVPCResourceController = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
-  }
+  } : {}
 
   policy_arn = each.value
-  role      = aws_iam_role.main[0].name
+  role       = aws_iam_role.main.name
 }
 
 resource "aws_iam_policy" "cluster_encryption" {
